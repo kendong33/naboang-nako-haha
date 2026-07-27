@@ -20,9 +20,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #fdf2f0;
-      /* Seamless custom heart pattern SVG background */
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath fill='%23ffb3ba' opacity='0.7' d='M30 18 c-5-5-13-2-15 4 c-2 6 2 12 15 23 c13-11 17-17 15-23 c-2-6-10-9-15-4 Z'/%3E%3Cpath fill='none' stroke='%232b2b2b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' d='M28 15 C22 8 10 12 10 22 C10 32 28 45 28 45 C28 45 46 32 46 22 C46 12 34 8 28 15 Z' transform='rotate(-10 28 25)'/%3E%3Cpath fill='%23ffb3ba' opacity='0.7' d='M90 78 c-5-5-13-2-15 4 c-2 6 2 12 15 23 c13-11 17-17 15-23 c-2-6-10-9-15-4 Z'/%3E%3Cpath fill='none' stroke='%232b2b2b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' d='M88 75 C82 68 70 72 70 82 C70 92 88 105 88 105 C88 105 106 92 106 82 C106 72 94 68 88 75 Z' transform='rotate(8 88 85)'/%3E%3C/svg%3E");
+      background-color: #f4f9ff;
+      /* Seamless heart pattern with soft romantic pink hearts */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath fill='%23ffc2d1' opacity='0.7' d='M30 18 c-5-5-13-2-15 4 c-2 6 2 12 15 23 c13-11 17-17 15-23 c-2-6-10-9-15-4 Z'/%3E%3Cpath fill='none' stroke='%232b2b2b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' d='M28 15 C22 8 10 12 10 22 C10 32 28 45 28 45 C28 45 46 32 46 22 C46 12 34 8 28 15 Z' transform='rotate(-10 28 25)'/%3E%3Cpath fill='%23ffc2d1' opacity='0.7' d='M90 78 c-5-5-13-2-15 4 c-2 6 2 12 15 23 c13-11 17-17 15-23 c-2-6-10-9-15-4 Z'/%3E%3Cpath fill='none' stroke='%232b2b2b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' d='M88 75 C82 68 70 72 70 82 C70 92 88 105 88 105 C88 105 106 92 106 82 C106 72 94 68 88 75 Z' transform='rotate(8 88 85)'/%3E%3C/svg%3E");
       background-size: 140px 140px;
       padding: 20px;
       overflow-x: hidden;
@@ -42,8 +42,6 @@
       z-index: 10;
     }
 
-    /* --- ENTRY PAGE STYLING (Box-only changes retained) --- */
-
     /* Header styling - Sky Blue */
     .card h2 {
       color: #38b6ff;
@@ -52,7 +50,7 @@
       margin-bottom: 12px;
     }
 
-    /* Target class for the embedded image */
+    /* Embedded Image styling */
     .image-embed {
       display: block;
       max-width: 200px;
@@ -62,7 +60,7 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
 
-    /* Input Field - Border Sky Blue */
+    /* Input Field - Sky Blue Border */
     .input-group {
       margin-bottom: 20px;
     }
@@ -83,7 +81,7 @@
       color: #a0a0a0;
     }
 
-    /* Submit Button - Background Sky Blue */
+    /* Submit Button - Sky Blue */
     button {
       width: 100%;
       padding: 12px;
@@ -105,9 +103,7 @@
       transform: scale(0.98);
     }
 
-    /* --- RESULT PAGE STYLING (Confession Letter) --- */
-
-    /* View is hidden by default */
+    /* Confession Letter View */
     #letter-card {
       display: none;
       opacity: 0;
@@ -122,11 +118,11 @@
       }
     }
 
-    /* Title - Updated to Sky Blue */
+    /* Title - Sky Blue */
     .letter-title {
       font-family: 'Sacramento', cursive;
       font-size: 2.5rem;
-      color: #38b6ff; /* New: Sky Blue */
+      color: #38b6ff;
       margin-bottom: 15px;
     }
 
@@ -138,22 +134,22 @@
       margin-bottom: 20px;
     }
 
-    /* Signature - Updated to Sky Blue */
+    /* Signature - Sky Blue Text */
     .letter-footer {
       font-family: 'Sacramento', cursive;
       font-size: 1.8rem;
-      color: #38b6ff; /* New: Sky Blue */
+      color: #38b6ff;
       text-align: right;
       margin-top: 15px;
     }
 
-    /* Dynamic class for the inputed name (used in greeting and text) - Updated to Sky Blue */
+    /* Dynamic Name Text - Sky Blue */
     .display-name {
       font-weight: 600;
-      color: #38b6ff; /* New: Sky Blue */
+      color: #38b6ff;
     }
 
-    /* Floating Heart Animation */
+    /* Floating Heart Effect */
     .floating-heart {
       position: fixed;
       bottom: -20px;
@@ -200,7 +196,7 @@
       <p>Just remember that there is absolutely no pressure for you to reciprocate my feelings. Your comfort must come first. I don’t want you to leave this server just because an admin of a Discord server confessed his feelings to you. You can take all the time you need to process all of this, whatever you decide, I’m okay with it.</p>
     </div>
     <div class="letter-footer">
-      Ken ❤️
+      Ken 💖
     </div>
   </div>
 
@@ -227,7 +223,8 @@
     });
 
     function createHearts() {
-      const hearts = ['❤️', '💖', '💗', '💕', '🌸'];
+      // Sparkling & affection heart emojis (romantic tone)
+      const hearts = ['💖', '💕', '💗', '💘', '🌸', '✨'];
       for (let i = 0; i < 25; i++) {
         setTimeout(() => {
           const heart = document.createElement('div');
