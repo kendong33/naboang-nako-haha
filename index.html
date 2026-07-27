@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Secret Message For You...</title>
+  <style>
+    /* Google Font for a cute aesthetic */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Sacramento&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fdf2f0;
+      /* Seamless custom heart pattern SVG background */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath fill='%23ffb3ba' opacity='0.7' d='M30 18 c-5-5-13-2-15 4 c-2 6 2 12 15 23 c13-11 17-17 15-23 c-2-6-10-9-15-4 Z'/%3E%3Cpath fill='none' stroke='%232b2b2b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' d='M28 15 C22 8 10 12 10 22 C10 32 28 45 28 45 C28 45 46 32 46 22 C46 12 34 8 28 15 Z' transform='rotate(-10 28 25)'/%3E%3Cpath fill='%23ffb3ba' opacity='0.7' d='M90 78 c-5-5-13-2-15 4 c-2 6 2 12 15 23 c13-11 17-17 15-23 c-2-6-10-9-15-4 Z'/%3E%3Cpath fill='none' stroke='%232b2b2b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' d='M88 75 C82 68 70 72 70 82 C70 92 88 105 88 105 C88 105 106 92 106 82 C106 72 94 68 88 75 Z' transform='rotate(8 88 85)'/%3E%3C/svg%3E");
+      background-size: 140px 140px;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    /* Container Card */
+    .card {
+      background: #ffffff;
+      padding: 35px 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Header styling */
+    .card h2 {
+      color: #e63946;
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    /* Target class for the embedded image */
+    .image-embed {
+      display: block;
+      max-width: 200px;
+      margin: 0 auto 18px auto;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    /* Input Field */
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px 20px;
+      border: 1.5px solid #e63946;
+      border-radius: 25px;
+      outline: none;
+      font-size: 0.95rem;
+      text-align: center;
+      color: #333;
+      font-family: inherit;
+    }
+
+    input[type="text"]::placeholder {
+      color: #a0a0a0;
+    }
+
+    /* Submit Button */
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #e63946;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    button:hover {
+      background-color: #d62839;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    /* Confession Letter View (Hidden by default) */
+    #letter-card {
+      display: none;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .letter-title {
+      font-family: 'Sacramento', cursive;
+      font-size: 2.5rem;
+      color: #e63946;
+      margin-bottom: 15px;
+    }
+
+    .letter-content {
+      color: #4a4a4a;
+      line-height: 1.7;
+      font-size: 1rem;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .letter-footer {
+      font-family: 'Sacramento', cursive;
+      font-size: 1.8rem;
+      color: #e63946;
+      text-align: right;
+      margin-top: 15px;
+    }
+
+    /* Highlight class for the inserted name in text */
+    .display-name {
+      font-weight: 600;
+      color: #e63946;
+    }
+
+    /* Floating Heart Effect */
+    .floating-heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 24px;
+      animation: floatUp 4s linear forwards;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="form-card">
+    <h2>Please Enter Your Name</h2>
+    <img src="https://m.media-amazon.com/images/M/MV5BNGYwYzI5MGEtNDg3ZS00MGEzLTg0NTQtYWFlYjU4OTk5NzBmXkEyXkFqcGc@._V1_.jpg" class="image-embed" alt="Anime girl looking down">
+    <form id="confessionForm">
+      <div class="input-group">
+        <input type="text" id="userName" placeholder="Your name here" required autocomplete="off">
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div class="card" id="letter-card">
+    <h1 class="letter-title">Dear <span class="display-name"></span>,</h1>
+    <div class="letter-content">
+      <p>Hello <span class="display-name"></span>, I know this might be unusual from me, receiving this letter, but I just want to express in this mode because it correlates with my course and your course as well. Since early June, I’ve been having this what you call “Happy crush.” I didn’t put much thought into it since it’s just a happy crush. But overtime, as we spend time in the voice call with our friends while playing, these feelings for you evolved. I wanted to be honest about how I feel, but please know there is absolutely no pressure for you to feel the same way as I do. I just really want you to know how I feel.</p>
+      <br>
+      <p><span class="display-name"></span>, I’ve liked you for a while now. I don’t know if you noticed it lately, but for me, I am so obvious with how I interact with you compared to others. I like you <span class="display-name"></span>.</p>
+      <br>
+      <p>I value the friendship that we have. I value the nights we spend talking to each other, playing together, and all the laughs we’ve exchanged. So don’t worry, I won’t pressure you into having a relationship with me. Though I don’t expect a relationship for now, since I know you’re still in your healing stage and I advised you not to engage with anyone yet, not until you are fully healed. But I would love to have the chance to court you properly at your own pace that you’re comfortable with.</p>
+      <br>
+      <p>Just remember that there is absolutely no pressure for you to reciprocate my feelings. Your comfort must come first. I don’t want you to leave this server just because an admin of a Discord server confessed his feelings to you. You can take all the time you need to process all of this, whatever you decide, I’m okay with it.</p>
+    </div>
+    <div class="letter-footer">
+      Ken ❤️
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('confessionForm');
+    const formCard = document.getElementById('form-card');
+    const letterCard = document.getElementById('letter-card');
+    const displayNameElements = document.querySelectorAll('.display-name');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('userName').value.trim();
+
+      if (name) {
+        displayNameElements.forEach(element => {
+          element.textContent = name;
+        });
+        
+        formCard.style.display = 'none';
+        letterCard.style.display = 'block';
+
+        createHearts();
+      }
+    });
+
+    function createHearts() {
+      const hearts = ['❤️', '💖', '💗', '💕', '🌸'];
+      for (let i = 0; i < 25; i++) {
+        setTimeout(() => {
+          const heart = document.createElement('div');
+          heart.classList.add('floating-heart');
+          heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+          heart.style.left = Math.random() * 100 + 'vw';
+          heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+          document.body.appendChild(heart);
+
+          setTimeout(() => {
+            heart.remove();
+          }, 5000);
+        }, i * 150);
+      }
+    }
+  </script>
+</body>
+</html>
