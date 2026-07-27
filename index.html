@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A Secret Message For You...</title>
   <style>
-    /* Google Font for a cute aesthetic */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Sacramento&display=swap');
 
     * {
@@ -21,14 +20,12 @@
       justify-content: center;
       align-items: center;
       background-color: #f4f9ff;
-      /* Seamless heart pattern with soft romantic pink hearts */
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath fill='%23ffc2d1' opacity='0.7' d='M30 18 c-5-5-13-2-15 4 c-2 6 2 12 15 23 c13-11 17-17 15-23 c-2-6-10-9-15-4 Z'/%3E%3Cpath fill='none' stroke='%232b2b2b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' d='M28 15 C22 8 10 12 10 22 C10 32 28 45 28 45 C28 45 46 32 46 22 C46 12 34 8 28 15 Z' transform='rotate(-10 28 25)'/%3E%3Cpath fill='%23ffc2d1' opacity='0.7' d='M90 78 c-5-5-13-2-15 4 c-2 6 2 12 15 23 c13-11 17-17 15-23 c-2-6-10-9-15-4 Z'/%3E%3Cpath fill='none' stroke='%232b2b2b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' d='M88 75 C82 68 70 72 70 82 C70 92 88 105 88 105 C88 105 106 92 106 82 C106 72 94 68 88 75 Z' transform='rotate(8 88 85)'/%3E%3C/svg%3E");
       background-size: 140px 140px;
       padding: 20px;
       overflow-x: hidden;
     }
 
-    /* Container Card */
     .card {
       background: #ffffff;
       padding: 35px 30px;
@@ -42,7 +39,6 @@
       z-index: 10;
     }
 
-    /* Header styling - Sky Blue */
     .card h2 {
       color: #38b6ff;
       font-size: 1.35rem;
@@ -50,7 +46,6 @@
       margin-bottom: 12px;
     }
 
-    /* Embedded Image styling */
     .image-embed {
       display: block;
       max-width: 200px;
@@ -60,7 +55,6 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
 
-    /* Input Field - Sky Blue Border */
     .input-group {
       margin-bottom: 20px;
     }
@@ -81,7 +75,6 @@
       color: #a0a0a0;
     }
 
-    /* Submit Button - Sky Blue */
     button {
       width: 100%;
       padding: 12px;
@@ -103,7 +96,6 @@
       transform: scale(0.98);
     }
 
-    /* Confession Letter View */
     #letter-card {
       display: none;
       opacity: 0;
@@ -118,7 +110,6 @@
       }
     }
 
-    /* Title - Sky Blue */
     .letter-title {
       font-family: 'Sacramento', cursive;
       font-size: 2.5rem;
@@ -134,7 +125,6 @@
       margin-bottom: 20px;
     }
 
-    /* Signature - Sky Blue Text */
     .letter-footer {
       font-family: 'Sacramento', cursive;
       font-size: 1.8rem;
@@ -143,13 +133,11 @@
       margin-top: 15px;
     }
 
-    /* Dynamic Name Text - Sky Blue */
     .display-name {
       font-weight: 600;
       color: #38b6ff;
     }
 
-    /* Floating Heart Effect */
     .floating-heart {
       position: fixed;
       bottom: -20px;
@@ -223,7 +211,6 @@
     });
 
     function createHearts() {
-      // Sparkling & affection heart emojis (romantic tone)
       const hearts = ['💖', '💕', '💗', '💘', '🌸', '✨'];
       for (let i = 0; i < 25; i++) {
         setTimeout(() => {
